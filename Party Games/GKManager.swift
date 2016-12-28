@@ -12,7 +12,8 @@ import GameKit
 final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDelegate {
     static let sharedInstance = GKManager()
     
-    var delegate: GKManagerDelegate?
+    var connectionDelegate: GKManagerConnectionDelegate?
+    var dataDelegate: GKManagerDataDelegate?
     var matchFinderDelegate: GKMatchFinderDelegate?
     var match: GKMatch?
     var host: GKPlayer?
@@ -78,7 +79,7 @@ final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDele
         if match.expectedPlayerCount == 0 {
             match.chooseBestHostingPlayer() {
                 self.host = $0
-                self.delegate?.hostFound()
+                self.connectionDelegate?.hostFound()
             }
             
         }
@@ -99,26 +100,27 @@ final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDele
         guard self.match == match else {
             return
         }
+        
         if match.expectedPlayerCount == 0 {
             switch state {
             case .stateConnected:
                 match.chooseBestHostingPlayer() {
                     self.host = $0
-                    self.delegate?.hostFound()
+                    self.connectionDelegate?.hostFound()
                 }
                 
             case .stateDisconnected:
                 if player.playerID == host?.playerID {
                     match.chooseBestHostingPlayer() {
                         self.host = $0
-                        self.delegate?.hostFound()
+                        self.connectionDelegate?.hostFound()
                     }
                 }
             default:
                 break
             }
             
-            delegate?.player(player, stateChanged: state)
+            connectionDelegate?.player(player, stateChanged: state)
         }
     }
     
@@ -127,7 +129,7 @@ final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDele
             return
         }
         
-        delegate?.receivedData(data, fromPlayer: player)
+        dataDelegate?.receivedData(data, fromPlayer: player)
     }
     
     func match(_ match: GKMatch, didFailWithError error: Error?) {
@@ -139,7 +141,7 @@ final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDele
         }
     }
     
-    func sendMessage(_ message: Data, mode: GKMatchSendDataMode) {
+    func send(_ message: Data, mode: GKMatchSendDataMode) {
         do {
             try match?.sendData(toAllPlayers: message, with: mode)
         }
@@ -148,52 +150,26 @@ final class GKManager: NSObject, GKMatchDelegate, GKMatchmakerViewControllerDele
         }
     }
     
-// Data Encoding Functions
-    private func encode<T>(_ value: T) -> Data {
-        var value = value
-        
-        
-        
-        return withUnsafePointer(to: &value) {
-            Data(buffer: UnsafeBufferPointer<T>(start: $0, count: 1))
+    func send(_ message: Data, to players: [GKPlayer], mode: GKMatchSendDataMode) {
+        do {
+            try match?.send(message, to: players, dataMode: mode)
         }
-    }
-    
-    private func decode<T>(_ data: Data) -> T {
-        let message: T = data.withUnsafeBytes {
-            $0.pointee
+        catch {
+            print("Could not send data with error: ", error.localizedDescription)
         }
-        
-        return message
     }
 }
 
 // Protocols
-protocol GKManagerDelegate {
+protocol GKManagerConnectionDelegate {
     func player(_ player: GKPlayer, stateChanged state: GKPlayerConnectionState)
-    func receivedData(_ data: Data, fromPlayer player: GKPlayer)
     func hostFound()
+}
+
+protocol GKManagerDataDelegate {
+    func receivedData(_ data: Data, fromPlayer player: GKPlayer)
 }
 
 protocol GKMatchFinderDelegate {
     func matchFound()
-}
-
-protocol DataConvertible {
-    init?(data: Data)
-    var data: Data { get }
-}
-
-// Extensions
-extension DataConvertible {
-    
-    init?(data: Data) {
-        guard data.count == MemoryLayout<Self>.size else { return nil }
-        self = data.withUnsafeBytes { $0.pointee }
-    }
-    
-    var data: Data {
-        var value = self
-        return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
-    }
 }

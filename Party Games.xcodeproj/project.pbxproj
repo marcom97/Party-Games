@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A925EA901DBBD08700CEA708 /* GKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A925EA8F1DBBD08700CEA708 /* GKManager.swift */; };
+		A944CA5B1DF626B100F637E2 /* TouchTargets.sks in Resources */ = {isa = PBXBuildFile; fileRef = A944CA5A1DF626B100F637E2 /* TouchTargets.sks */; };
+		A944CA5D1DF6315100F637E2 /* TouchTargets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A944CA5C1DF6315100F637E2 /* TouchTargets.swift */; };
+		A944CA611DF67F3600F637E2 /* MiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A944CA601DF67F3600F637E2 /* MiniGame.swift */; };
 		A96709B71DCAEB13004E5A36 /* GameManagerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96709B61DCAEB13004E5A36 /* GameManagerScene.swift */; };
 		A970EB2D1DB5980F006ACD86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970EB2C1DB5980F006ACD86 /* AppDelegate.swift */; };
 		A970EB311DB5980F006ACD86 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A970EB301DB5980F006ACD86 /* Actions.sks */; };
@@ -18,6 +21,7 @@
 		A970EB3D1DB59810006ACD86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A970EB3B1DB59810006ACD86 /* LaunchScreen.storyboard */; };
 		A970EB481DB59810006ACD86 /* Party_GamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970EB471DB59810006ACD86 /* Party_GamesTests.swift */; };
 		A970EB531DB59810006ACD86 /* Party_GamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970EB521DB59810006ACD86 /* Party_GamesUITests.swift */; };
+		A987A0CD1E0B03ED008A69CC /* DataConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A987A0CC1E0B03ED008A69CC /* DataConvertible.swift */; };
 		A9D9B9B51DC6CDA200961481 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D9B9B41DC6CDA200961481 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		A925EA8F1DBBD08700CEA708 /* GKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GKManager.swift; sourceTree = "<group>"; };
+		A944CA5A1DF626B100F637E2 /* TouchTargets.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchTargets.sks; sourceTree = "<group>"; };
+		A944CA5C1DF6315100F637E2 /* TouchTargets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchTargets.swift; sourceTree = "<group>"; };
+		A944CA601DF67F3600F637E2 /* MiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame.swift; sourceTree = "<group>"; };
 		A96709B61DCAEB13004E5A36 /* GameManagerScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManagerScene.swift; sourceTree = "<group>"; };
 		A970EB291DB5980F006ACD86 /* Party Games.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Party Games.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970EB2C1DB5980F006ACD86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +63,9 @@
 		A970EB4E1DB59810006ACD86 /* Party GamesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Party GamesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A970EB521DB59810006ACD86 /* Party_GamesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party_GamesUITests.swift; sourceTree = "<group>"; };
 		A970EB541DB59810006ACD86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A987A0CC1E0B03ED008A69CC /* DataConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConvertible.swift; sourceTree = "<group>"; };
 		A9D9B9B41DC6CDA200961481 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		A9F574BE1E134AED00D79B46 /* MiniGameTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameTemplate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A944CA591DF6263800F637E2 /* Mini Games */ = {
+			isa = PBXGroup;
+			children = (
+				A944CA601DF67F3600F637E2 /* MiniGame.swift */,
+				A944CA5A1DF626B100F637E2 /* TouchTargets.sks */,
+				A944CA5C1DF6315100F637E2 /* TouchTargets.swift */,
+				A9F574BE1E134AED00D79B46 /* MiniGameTemplate.swift */,
+			);
+			name = "Mini Games";
+			sourceTree = "<group>";
+		};
 		A970EB201DB5980E006ACD86 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +129,10 @@
 		A970EB2B1DB5980F006ACD86 /* Party Games */ = {
 			isa = PBXGroup;
 			children = (
+				A944CA591DF6263800F637E2 /* Mini Games */,
 				A970EB2C1DB5980F006ACD86 /* AppDelegate.swift */,
 				A925EA8F1DBBD08700CEA708 /* GKManager.swift */,
+				A987A0CC1E0B03ED008A69CC /* DataConvertible.swift */,
 				A970EB301DB5980F006ACD86 /* Actions.sks */,
 				A96709B61DCAEB13004E5A36 /* GameManagerScene.swift */,
 				A970EB321DB5980F006ACD86 /* MenuScene.swift */,
@@ -268,6 +290,7 @@
 				A970EB3A1DB5980F006ACD86 /* Assets.xcassets in Resources */,
 				A970EB3D1DB59810006ACD86 /* LaunchScreen.storyboard in Resources */,
 				A970EB311DB5980F006ACD86 /* Actions.sks in Resources */,
+				A944CA5B1DF626B100F637E2 /* TouchTargets.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +319,10 @@
 				A925EA901DBBD08700CEA708 /* GKManager.swift in Sources */,
 				A96709B71DCAEB13004E5A36 /* GameManagerScene.swift in Sources */,
 				A970EB351DB5980F006ACD86 /* GameViewController.swift in Sources */,
+				A944CA5D1DF6315100F637E2 /* TouchTargets.swift in Sources */,
 				A970EB2D1DB5980F006ACD86 /* AppDelegate.swift in Sources */,
+				A944CA611DF67F3600F637E2 /* MiniGame.swift in Sources */,
+				A987A0CD1E0B03ED008A69CC /* DataConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

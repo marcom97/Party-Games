@@ -10,7 +10,6 @@ import SpriteKit
 import GameplayKit
 
 class MenuScene: SKScene, GKMatchFinderDelegate {
-    
     private let sharedInstance = GKManager.sharedInstance
     private var playText: SKLabelNode?
     private var startingTouch : UITouch?
